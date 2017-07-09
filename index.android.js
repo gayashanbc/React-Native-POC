@@ -1,30 +1,23 @@
 import React, { Component } from 'react';
-import { AppRegistry, View } from 'react-native';
-import {StackNavigator} from 'react-navigation';
+import { AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-//import Routes from './Routes.js';
+import AppReducer from './reducers';
+import AppWithNavigationState from './navigators/AppNavigator';
 
-import CoolMaps from './CoolMaps';
-import TripDetails from './TripDetails';
-// import TripList from './TripList.js';
-// import TripItem from './TripItem';
+export default class myFirstApp extends Component {
+  store = createStore(AppReducer);
 
-// class myFirstApp extends Component {
-//   render() {
-//     return (
-//       <Routes />
-//     )
-//   }
-// }
+  render() {
+    return (
+      <Provider store={this.store}>
+        <AppWithNavigationState />
+      </Provider>
+    );
+  }
+}
 
-// export default myFirstApp
-
-const myFirstApp = StackNavigator({
-  CoolMaps: {screen: CoolMaps},
-  TripDetails: {screen: TripDetails},
-  // TripList: {screen: TripList},
-  // TripItem: {screen: TripItem}
-});
 
 AppRegistry.registerComponent('myFirstApp', () => myFirstApp)
 
