@@ -1,0 +1,92 @@
+{
+    "trip": [
+        {
+            "title": "Trip to Rome",
+            "date": "1980-01-02T00:00:00.000Z",
+            "travelType": 3,
+            "status": 1,
+            "duration": 45,
+            "distance": 560,
+            "points": [
+                {
+                    "lat": 6.905426,
+                    "lon": 79.854599
+                },
+                {
+                    "lat": 6.505426,
+                    "lon": 79.554599
+                },
+                {
+                    "lat": 6.005426,
+                    "lon": 79.054599
+                }
+            ]
+        },
+        {
+            "title": "Trip to Rome",
+            "date": "1980-01-02T00:00:00.000Z",
+            "travelType": 3,
+            "status": 1,
+            "duration": 45,
+            "distance": 560,
+            "points": [
+                {
+                    "lat": 6.905426,
+                    "lon": 79.854599
+                },
+                {
+                    "lat": 6.505426,
+                    "lon": 79.554599
+                },
+                {
+                    "lat": 6.005426,
+                    "lon": 79.054599
+                }
+            ]
+        },
+        {
+            "title": "Trip to Rome",
+            "date": "1980-01-02T00:00:00.000Z",
+            "travelType": 3,
+            "status": 1,
+            "duration": 45,
+            "distance": 560,
+            "points": [
+                {
+                    "lat": 6.905426,
+                    "lon": 79.854599
+                },
+                {
+                    "lat": 6.505426,
+                    "lon": 79.554599
+                },
+                {
+                    "lat": 6.005426,
+                    "lon": 79.054599
+                }
+            ]
+        },
+        {
+            "title": "Trip to Rome",
+            "date": "1980-01-02T00:00:00.000Z",
+            "travelType": 3,
+            "status": 1,
+            "duration": 45,
+            "distance": 560,
+            "points": [
+                {
+                    "lat": 6.905426,
+                    "lon": 79.854599
+                },
+                {
+                    "lat": 6.505426,
+                    "lon": 79.554599
+                },
+                {
+                    "lat": 6.005426,
+                    "lon": 79.054599
+                }
+            ]
+        }
+    ]
+}
