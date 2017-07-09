@@ -1,173 +1,22 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import TripList from './TripList.js';
 
-class CoolMaps extends Component {
-    static navigationOptions = {
-        title: 'Cool Maps'
-    }
-    constructor(props) {
-        super(props);
-        this.state = {
-            tripData: [
-                {
-                    "id": 0,
-                    "title": "Trip to Rome",
-                    "date": "1980-01-02T00:00:00.000Z",
-                    "travelType": 1,
-                    "status": 1,
-                    "duration": 70,
-                    "distance": 125,
-                    "points": [
-                        {
-                            "lat": 6.905426,
-                            "lon": 79.854599
-                        },
-                        {
-                            "lat": 6.505426,
-                            "lon": 79.554599
-                        },
-                        {
-                            "lat": 6.005426,
-                            "lon": 79.054599
-                        }
-                    ]
-                },
-                {
-                    "id": 1,
-                    "title": "Trip to India",
-                    "date": "1980-01-02T00:00:00.000Z",
-                    "travelType": 2,
-                    "status": 0,
-                    "duration": 12,
-                    "distance": 428,
-                    "points": [
-                        {
-                            "lat": 6.905426,
-                            "lon": 79.854599
-                        },
-                        {
-                            "lat": 6.505426,
-                            "lon": 79.554599
-                        },
-                        {
-                            "lat": 6.005426,
-                            "lon": 79.054599
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "title": "Trip to China",
-                    "date": "1980-01-02T00:00:00.000Z",
-                    "travelType": 1,
-                    "status": 1,
-                    "duration": 45,
-                    "distance": 560,
-                    "points": [
-                        {
-                            "lat": 6.905426,
-                            "lon": 79.854599
-                        },
-                        {
-                            "lat": 6.505426,
-                            "lon": 79.554599
-                        },
-                        {
-                            "lat": 6.005426,
-                            "lon": 79.054599
-                        }
-                    ]
-                },
-                {
-                    "id": 3,
-                    "title": "Trip to Africa",
-                    "date": "1980-01-02T00:00:00.000Z",
-                    "travelType": 1,
-                    "status": 1,
-                    "duration": 10,
-                    "distance": 325,
-                    "points": [
-                        {
-                            "lat": 6.905426,
-                            "lon": 79.854599
-                        },
-                        {
-                            "lat": 6.505426,
-                            "lon": 79.554599
-                        },
-                        {
-                            "lat": 6.005426,
-                            "lon": 79.054599
-                        }
-                    ]
-                },
-                {
-                    "id": 4,
-                    "title": "Trip to Iraq",
-                    "date": "1980-01-02T00:00:00.000Z",
-                    "travelType": 3,
-                    "status": 0,
-                    "duration": 84,
-                    "distance": 1245,
-                    "points": [
-                        {
-                            "lat": 6.905426,
-                            "lon": 79.854599
-                        },
-                        {
-                            "lat": 6.505426,
-                            "lon": 79.554599
-                        },
-                        {
-                            "lat": 6.005426,
-                            "lon": 79.054599
-                        }
-                    ]
-                }
-                ,
-                {
-                    "id": 5,
-                    "title": "Trip to Japan",
-                    "date": "1980-01-02T00:00:00.000Z",
-                    "travelType": 2,
-                    "status": 0,
-                    "duration": 15,
-                    "distance": 200,
-                    "points": [
-                        {
-                            "lat": 6.905426,
-                            "lon": 79.854599
-                        },
-                        {
-                            "lat": 6.505426,
-                            "lon": 79.554599
-                        },
-                        {
-                            "lat": 6.005426,
-                            "lon": 79.054599
-                        }
-                    ]
-                }
-            ]
-        }
-    }
+// class CoolMaps extends Component {
+//     static navigationOptions = {
+//         title: 'Cool Maps'
+//     }
 
+//     render() {
+//         return (
+//             <TripList tripData={this.state.tripData} navigation = {this.props.navigation} />
+//         )
+//     }
+// }
 
-    render() {
-        // const goToTripDetails = () => {
-        //     Actions.tripDetails()
-        // }
-
-        return (
-            <TripList tripData={this.state.tripData} navigation = {this.props.navigation} />
-
-        )
-    }
-}
-export default CoolMaps
 
 const styles = StyleSheet.create({
     container: {
@@ -187,3 +36,26 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 });
+
+//export default CoolMaps;
+
+const CoolMaps = ({ tripData, dispatch }) => {
+    return (
+        <TripList tripData={tripData} />
+    );
+};
+
+CoolMaps.navigationOptions = {
+    title: 'Cool Maps'
+}
+
+CoolMaps.propTypes = {
+    tripData: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+    tripData: state.trips.tripData,
+});
+
+export default connect(mapStateToProps)(CoolMaps);
