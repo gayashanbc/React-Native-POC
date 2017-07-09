@@ -11,7 +11,7 @@ class TripList extends Component {
         return (
             <FlatList
                 data={this.props.tripData}
-                renderItem={({ item }) => <TripItem key = {item.id} item={item} navigation = {this.props.navigation} />}
+                renderItem={({ item }) => <TripItem key = {item.id} item={item} dispatch = {this.props.dispatch} />}
                 keyExtractor={item => item.id}
             />
         )

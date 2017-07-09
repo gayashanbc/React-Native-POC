@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 
 const CoolMaps = ({ tripData, dispatch }) => {
     return (
-        <TripList tripData={tripData} />
+        <TripList tripData={tripData} dispatch = {dispatch} />
     );
 };
 

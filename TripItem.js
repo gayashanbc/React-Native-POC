@@ -6,14 +6,12 @@ import { NavigationActions } from 'react-navigation';
 
 class TripItem extends Component {
     render() {
- //       const { navigate } = this.props.navigation;
         return (
             <TouchableOpacity
                 style={styles.container}
                 onPress={() =>
-                    dispatch(NavigationActions.navigate({ routeName: 'TripDetails' }))}
-                item={this.props.item}
-            //onPress={ () => navigate('TripDetails', {item:this.props.item} )}
+                    this.props.dispatch(NavigationActions.navigate({ routeName: 'TripDetails', params: { item: this.props.item } }))}
+            //   item={this.props.item}
             >
                 <View style={styles.internalContainer}>
                     <Text style={styles.textDate}>
@@ -35,6 +33,34 @@ class TripItem extends Component {
         );
     }
 }
+
+// const TripItem = ({ props, dispatch }) => {
+//     return (
+//         <TouchableOpacity
+//             style={styles.container}
+//             onPress={() =>
+//                 dispatch(NavigationActions.navigate({ routeName: 'TripDetails' }))}
+//             item={props.item}
+//         >
+//             <View style={styles.internalContainer}>
+//                 <Text style={styles.textDate}>
+//                     {props.item.date}
+//                 </Text>
+//                 {props.item.status == 0 ? <Text style={styles.textApproved}>
+//                     Not Approved
+//                                     </Text> : <Text style={styles.textNotApproved}>
+//                         Approved
+//                                         </Text>}
+//             </View>
+//             <View style={styles.internalContainer}>
+//                 <Text style={styles.textTitle}>
+//                     {props.item.title}
+//                 </Text>
+//                 <Icon name="done" size={30} color="black" />
+//             </View>
+//         </TouchableOpacity>
+//     );
+// };
 
 export default TripItem;
 

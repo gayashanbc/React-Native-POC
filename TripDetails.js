@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Button, Text, View } from 'react-native'
-import { Actions } from 'react-native-router-flux'
+import { StyleSheet, Button, Text, View } from 'react-native';
 
 class TripDetails extends Component {
     static navigationOptions = {
@@ -8,9 +7,6 @@ class TripDetails extends Component {
     }
 
     render() {
-        // const goToTripDetails = () => {
-        //     Actions.coolMaps()
-        // }
 
         const {goBack} = this.props.navigation;
         const {params} = this.props.navigation.state;
