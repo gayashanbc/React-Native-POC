@@ -5,19 +5,6 @@ import { connect } from 'react-redux';
 
 import TripList from './TripList.js';
 
-// class CoolMaps extends Component {
-//     static navigationOptions = {
-//         title: 'Cool Maps'
-//     }
-
-//     render() {
-//         return (
-//             <TripList tripData={this.state.tripData} navigation = {this.props.navigation} />
-//         )
-//     }
-// }
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -36,8 +23,6 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 });
-
-//export default CoolMaps;
 
 const CoolMaps = ({ tripData, dispatch }) => {
     return (

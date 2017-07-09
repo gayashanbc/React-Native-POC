@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
-//import LoginScreen from '../components/LoginScreen';
 import CoolMaps from '../CoolMaps';
 import TripDetails from '../TripDetails';
 

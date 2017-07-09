@@ -11,7 +11,6 @@ class TripItem extends Component {
                 style={styles.container}
                 onPress={() =>
                     this.props.dispatch(NavigationActions.navigate({ routeName: 'TripDetails', params: { item: this.props.item } }))}
-            //   item={this.props.item}
             >
                 <View style={styles.internalContainer}>
                     <Text style={styles.textDate}>
@@ -34,44 +33,12 @@ class TripItem extends Component {
     }
 }
 
-// const TripItem = ({ props, dispatch }) => {
-//     return (
-//         <TouchableOpacity
-//             style={styles.container}
-//             onPress={() =>
-//                 dispatch(NavigationActions.navigate({ routeName: 'TripDetails' }))}
-//             item={props.item}
-//         >
-//             <View style={styles.internalContainer}>
-//                 <Text style={styles.textDate}>
-//                     {props.item.date}
-//                 </Text>
-//                 {props.item.status == 0 ? <Text style={styles.textApproved}>
-//                     Not Approved
-//                                     </Text> : <Text style={styles.textNotApproved}>
-//                         Approved
-//                                         </Text>}
-//             </View>
-//             <View style={styles.internalContainer}>
-//                 <Text style={styles.textTitle}>
-//                     {props.item.title}
-//                 </Text>
-//                 <Icon name="done" size={30} color="black" />
-//             </View>
-//         </TouchableOpacity>
-//     );
-// };
-
-export default TripItem;
-
 const styles = StyleSheet.create({
     container: {
         padding: 10,
         marginTop: 3,
         backgroundColor: 'white',
-
         flex: 1,
-
     },
     internalContainer: {
         alignItems: 'center',
@@ -98,4 +65,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold'
     }
-})
+});
+
+export default TripItem;
