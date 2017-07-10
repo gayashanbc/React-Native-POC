@@ -12,12 +12,12 @@ const initialNavState = AppNavigator.router.getStateForAction(
 function nav(state = initialNavState, action) {
     let nextState;
     switch (action.type) {
-        // case 'Login':
-        //     nextState = AppNavigator.router.getStateForAction(
-        //         NavigationActions.back(),
-        //         state
-        //     );
-        //     break;
+        case 'APPROVE_TRIP':
+            nextState = AppNavigator.router.getStateForAction(
+                NavigationActions.back(),
+                state
+            );
+            break;
         // case 'Logout':
         //     nextState = AppNavigator.router.getStateForAction(
         //         NavigationActions.navigate({ routeName: 'Login' }),
@@ -194,6 +194,8 @@ function trips(state = initialState, action) {
     switch (action.type) {
         case 'FETCH_TRIPS':
             return { ...state };
+        case 'APPROVE_TRIP':
+            return { ...state, status: 1 };
         default:
             return state;
     }

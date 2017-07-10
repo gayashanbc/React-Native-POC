@@ -26,7 +26,9 @@ class TripItem extends Component {
                     <Text style={styles.textTitle}>
                         {this.props.item.title}
                     </Text>
-                    <Icon name="done" size={30} color="black" />
+                    {this.props.item.travelType == 1 ?
+                        <Icon name="train" size={30} color="black" />
+                        : <Icon name="flight" size={30} color="black" />}
                 </View>
             </TouchableOpacity>
         );

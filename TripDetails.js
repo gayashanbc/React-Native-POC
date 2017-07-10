@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Button, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
 class TripDetails extends Component {
     static navigationOptions = {
@@ -7,9 +8,8 @@ class TripDetails extends Component {
     }
 
     render() {
-
-        const {goBack} = this.props.navigation;
-        const {params} = this.props.navigation.state;
+        const { goBack } = this.props.navigation;
+        const { params } = this.props.navigation.state;
         return (
             <View style={styles.container}>
                 <View style={styles.mapView}>
@@ -49,7 +49,6 @@ class TripDetails extends Component {
         );
     }
 }
-export default TripDetails
 
 const styles = StyleSheet.create({
     container: {
@@ -97,3 +96,9 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 });
+
+const mapStateToProps = state => ({
+    item:state.trips.tripData,
+});
+
+export default TripDetails;
