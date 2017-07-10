@@ -1,53 +1,61 @@
 import React, { Component } from 'react'
 import { StyleSheet, Button, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
-class TripDetails extends Component {
-    static navigationOptions = {
-        title: "Trip Details"
-    }
+const TripDetails = (props) => {
+    console.log(props);
+    const { navigation, dispatch, tripData } = props;
+    const { params } = navigation.state;
 
-    render() {
-        const { goBack } = this.props.navigation;
-        const { params } = this.props.navigation.state;
-        return (
-            <View style={styles.container}>
-                <View style={styles.mapView}>
-                    <Text style={styles.welcome}>
-                        {params.item.title}
+    return (
+        <View style={styles.container}>
+            <View style={styles.mapView}>
+                <Text style={styles.welcome}>
+                    {params.item.title}
+                </Text>
+            </View>
+            <View style={styles.statsView}>
+                <View style={styles.statsViewInner}>
+                    <Text style={styles.statsLineOne}>
+                        Start
+                    </Text>
+                    <Text style={styles.statsLineOne}>
+                        Duration
+                    </Text>
+                    <Text style={styles.statsLineOne}>
+                        Distance
                     </Text>
                 </View>
-                <View style={styles.statsView}>
-                    <View style={styles.statsViewInner}>
-                        <Text style={styles.statsLineOne}>
-                            Start
+                <View style={styles.statsViewInner}>
+                    <Text style={styles.statsLineTwo}>
+                        09:40
                     </Text>
-                        <Text style={styles.statsLineOne}>
-                            Duration
+                    <Text style={styles.statsLineTwo}>
+                        {params.item.duration}
                     </Text>
-                        <Text style={styles.statsLineOne}>
-                            Distance
+                    <Text style={styles.statsLineTwo}>
+                        {params.item.distance}
                     </Text>
-                    </View>
-                    <View style={styles.statsViewInner}>
-                        <Text style={styles.statsLineTwo}>
-                            09:40
-                    </Text>
-                        <Text style={styles.statsLineTwo}>
-                            {params.item.duration}
-                        </Text>
-                        <Text style={styles.statsLineTwo}>
-                            {params.item.distance}
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.buttonView}>
-                    <Button style={styles.btnApprove} onPress={() => goBack()} color="green" title="Approve" />
-                    <Button style={styles.btnReject} onPress={() => goBack()} color="red" title="Reject" />
                 </View>
             </View>
-        );
-    }
+            <View style={styles.buttonView}>
+                <Button style={styles.btnApprove} onPress={() => {
+                    dispatch({ type: 'APPROVE_TRIP', payload: params.item.id });
+                    dispatch(NavigationActions.navigate({ routeName: 'CoolMaps' }));
+                }} color="green" title="Approve" />
+                <Button style={styles.btnReject} onPress={() => {
+                    dispatch({ type: 'REJECT_TRIP', payload: params.item.id });
+                    dispatch(NavigationActions.navigate({ routeName: 'CoolMaps' }));
+                }} color="red" title="Reject" />
+            </View>
+        </View>
+    );
+};
+
+
+TripDetails.navigationOptions = {
+    title: 'Trip Details'
 }
 
 const styles = StyleSheet.create({
@@ -64,7 +72,6 @@ const styles = StyleSheet.create({
     buttonView: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-
         marginTop: 100
     },
     statsView: {
@@ -98,7 +105,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    item:state.trips.tripData,
+    tripData: state.trips.tripData,
 });
 
-export default TripDetails;
+export default connect(mapStateToProps)(TripDetails);

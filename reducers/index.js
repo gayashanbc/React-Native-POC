@@ -12,12 +12,12 @@ const initialNavState = AppNavigator.router.getStateForAction(
 function nav(state = initialNavState, action) {
     let nextState;
     switch (action.type) {
-        case 'APPROVE_TRIP':
-            nextState = AppNavigator.router.getStateForAction(
-                NavigationActions.back(),
-                state
-            );
-            break;
+        // case 'APPROVE_TRIP':
+        //     nextState = AppNavigator.router.getStateForAction(
+        //         NavigationActions.back(),
+        //         state
+        //     );
+        //     break;
         // case 'Logout':
         //     nextState = AppNavigator.router.getStateForAction(
         //         NavigationActions.navigate({ routeName: 'Login' }),
@@ -29,22 +29,8 @@ function nav(state = initialNavState, action) {
             break;
     }
 
-    // Simply return the original `state` if `nextState` is null or undefined.
     return nextState || state;
 }
-
-// const initialAuthState = { isLoggedIn: false };
-
-// function auth(state = initialAuthState, action) {
-//     switch (action.type) {
-//         case 'Login':
-//             return { ...state, isLoggedIn: true };
-//         case 'Logout':
-//             return { ...state, isLoggedIn: false };
-//         default:
-//             return state;
-//     }
-// }
 
 const initialState = {
     tripData: [
@@ -194,8 +180,28 @@ function trips(state = initialState, action) {
     switch (action.type) {
         case 'FETCH_TRIPS':
             return { ...state };
-        case 'APPROVE_TRIP':
-            return { ...state, status: 1 };
+        case 'APPROVE_TRIP': {
+            console.log(state);
+            console.log(action.payload);
+            state.tripData.forEach((item) => {
+                if (item.id === action.payload) {
+                    item.status = 1;
+                }
+            });
+            console.log(state);
+            return { ...state };
+        }
+        case 'REJECT_TRIP': {
+            console.log(state);
+            console.log(action.payload);
+            state.tripData.forEach((item) => {
+                if (item.id === action.payload) {
+                    item.status = 0;
+                }
+            });
+            console.log(state);
+            return { ...state };
+        }
         default:
             return state;
     }
@@ -203,7 +209,7 @@ function trips(state = initialState, action) {
 
 const AppReducer = combineReducers({
     nav,
-    trips,
+    trips
 });
 
 export default AppReducer;
