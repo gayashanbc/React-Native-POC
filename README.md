@@ -8,11 +8,12 @@ This is a mobile app developed under [this](https://docs.google.com/document/d/1
 * Replaced react-native-router-flux with react-navigation.
 * Replaced ScrollView with a FlatList.
 * Integrated with Redux.
+* Added icons to each list item based on the travelType property in the JSON object
 
 ## What I have yet to do
 * Host the JSON file in the cloud and fetch that data to the app use React's Fetch API.
 * Add functionality to the 'Approve' and 'Reject' buttons, so when either of them is clicked, React's Fetch API will update the JSON file.
-* Add icons to each list item based on the travelType property in the JSON object.
+* ~~Add icons to each list item based on the travelType property in the JSON object.~~
 * Improve and optimize react-navigation and redux integration.
 
 ## Screenshots
