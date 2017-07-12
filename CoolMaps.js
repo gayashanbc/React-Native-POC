@@ -3,6 +3,8 @@ import { TouchableOpacity, StyleSheet, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { tripsFetchData } from './actions/';
+
 import TripList from './TripList.js';
 
 const styles = StyleSheet.create({
@@ -24,23 +26,46 @@ const styles = StyleSheet.create({
     },
 });
 
-const CoolMaps = ({ tripData, dispatch }) => {
-    return (
-        <TripList tripData={tripData} dispatch = {dispatch} />
-    );
-};
+// const CoolMaps = ({ tripData, dispatch, hasErrored, tripsFetchData }) => {
+//     console.log(`Error: ${hasErrored}`);
+//     return (
+//         <TripList tripData={tripData} dispatch = {dispatch} />
+//     );
+// };
 
-CoolMaps.navigationOptions = {
-    title: 'Cool Maps'
+class CoolMaps extends Component {
+    static navigationOptions = {
+        title: 'Cool Maps'
+    }
+
+    componentDidMount() {
+        this.props.tripsFetchData('https://api.myjson.com/bins/vg0qn');
+    }
+
+    render() {
+        console.log(`Error: ${this.props.hasErrored}`);
+        return (
+            <TripList tripData={this.props.tripData} dispatch={this.props.dispatch} />
+        );
+    }
 }
 
-CoolMaps.propTypes = {
-    tripData: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired,
-};
+// CoolMaps.navigationOptions = {
+//     title: 'Cool Maps'
+// }
+
+// CoolMaps.propTypes = {
+//     tripData: PropTypes.array.isRequired,
+//     dispatch: PropTypes.func.isRequired,
+// };
 
 const mapStateToProps = state => ({
-    tripData: state.trips.tripData,
+    tripData: state.trips,
+    hasErrored: state.tripsFetchDataError
 });
 
-export default connect(mapStateToProps)(CoolMaps);
+const mapDispatchToProps = dispatch => ({
+    tripsFetchData: (url) => dispatch(tripsFetchData(url))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoolMaps);
