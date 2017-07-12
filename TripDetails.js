@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { StyleSheet, Button, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
+import { changeTripStatus } from './actions';
 
 const TripDetails = (props) => {
-    console.log(props);
-    const { navigation, dispatch, tripData } = props;
+    const { navigation, tripData } = props;
     const { params } = navigation.state;
+    const { goBack } = navigation;
 
     return (
         <View style={styles.container}>
@@ -41,12 +42,12 @@ const TripDetails = (props) => {
             </View>
             <View style={styles.buttonView}>
                 <Button style={styles.btnApprove} onPress={() => {
-                    dispatch({ type: 'APPROVE_TRIP', payload: params.item.id });
-                    dispatch(NavigationActions.navigate({ routeName: 'CoolMaps' }));
+                    props.changeTripStatus(params.item, 1);
+                    goBack();
                 }} color="green" title="Approve" />
                 <Button style={styles.btnReject} onPress={() => {
-                    dispatch({ type: 'REJECT_TRIP', payload: params.item.id });
-                    dispatch(NavigationActions.navigate({ routeName: 'CoolMaps' }));
+                    props.changeTripStatus(params.item, 0);
+                    goBack();
                 }} color="red" title="Reject" />
             </View>
         </View>
@@ -108,4 +109,8 @@ const mapStateToProps = state => ({
     tripData: state.trips.tripData,
 });
 
-export default connect(mapStateToProps)(TripDetails);
+const mapDispatchToProps = dispatch => ({
+    changeTripStatus: (trip, status) => dispatch(changeTripStatus(trip, status))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TripDetails);

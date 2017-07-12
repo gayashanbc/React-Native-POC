@@ -5,6 +5,7 @@ import { NavigationActions } from 'react-navigation';
 
 
 class TripItem extends Component {
+    
     render() {
         return (
             <TouchableOpacity

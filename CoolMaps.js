@@ -26,13 +26,6 @@ const styles = StyleSheet.create({
     },
 });
 
-// const CoolMaps = ({ tripData, dispatch, hasErrored, tripsFetchData }) => {
-//     console.log(`Error: ${hasErrored}`);
-//     return (
-//         <TripList tripData={tripData} dispatch = {dispatch} />
-//     );
-// };
-
 class CoolMaps extends Component {
     static navigationOptions = {
         title: 'Cool Maps'
@@ -43,21 +36,11 @@ class CoolMaps extends Component {
     }
 
     render() {
-        console.log(`Error: ${this.props.hasErrored}`);
         return (
-            <TripList tripData={this.props.tripData} dispatch={this.props.dispatch} />
+            <TripList tripData={this.props.tripData} dispatch={this.props.navigation.dispatch} />
         );
     }
 }
-
-// CoolMaps.navigationOptions = {
-//     title: 'Cool Maps'
-// }
-
-// CoolMaps.propTypes = {
-//     tripData: PropTypes.array.isRequired,
-//     dispatch: PropTypes.func.isRequired,
-// };
 
 const mapStateToProps = state => ({
     tripData: state.trips,
