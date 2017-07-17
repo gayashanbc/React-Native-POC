@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { tripsFetchData } from './actions/';
 
-import TripList from './TripList.js';
+import TripList from './TripList';
 
 const styles = StyleSheet.create({
     container: {
