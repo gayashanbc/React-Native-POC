@@ -32,7 +32,7 @@ class CoolMaps extends Component {
     }
 
     componentDidMount() {
-        this.props.tripsFetchData('https://api.myjson.com/bins/vg0qn');
+        this.props.dispatch({ type: 'TRIPS_FETCH_DATA_REQUESTED', payload: { url: 'https://api.myjson.com/bins/vg0qn' } });
     }
 
     render() {
@@ -48,7 +48,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    tripsFetchData: (url) => dispatch(tripsFetchData(url))
+    dispatch
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoolMaps);

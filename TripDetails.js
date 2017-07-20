@@ -55,6 +55,7 @@ const TripDetails = (props) => {
   const { navigation } = props;
   const { params } = navigation.state;
   const { goBack } = navigation;
+  const { dispatch } = props;
 
   return (
     <View style={styles.container}>
@@ -66,18 +67,18 @@ const TripDetails = (props) => {
       <View style={styles.statsView}>
         <View style={styles.statsViewInner}>
           <Text style={styles.statsLineOne}>
-                        Start
+            Start
                     </Text>
           <Text style={styles.statsLineOne}>
-                        Duration
+            Duration
                     </Text>
           <Text style={styles.statsLineOne}>
-                        Distance
+            Distance
                     </Text>
         </View>
         <View style={styles.statsViewInner}>
           <Text style={styles.statsLineTwo}>
-                        09:40
+            09:40
                     </Text>
           <Text style={styles.statsLineTwo}>
             {params.item.duration}
@@ -91,7 +92,7 @@ const TripDetails = (props) => {
         <Button
           style={styles.btnApprove}
           onPress={() => {
-            props.changeTripStatus(params.item, 1);
+            props.dispatch({ type: 'TRIP_STATUS_CHANGE_REQUESTED', payload: { url: 'https://api.myjson.com/bins/vg0qn', trip: params.item, status: 1 } });
             goBack();
           }}
           color="green"
@@ -100,7 +101,7 @@ const TripDetails = (props) => {
         <Button
           style={styles.btnReject}
           onPress={() => {
-            props.changeTripStatus(params.item, 0);
+            props.dispatch({ type: 'TRIP_STATUS_CHANGE_REQUESTED', payload: { url: 'https://api.myjson.com/bins/vg0qn', trip: params.item, status: 0 } });
             goBack();
           }}
           color="red"
@@ -113,7 +114,6 @@ const TripDetails = (props) => {
 
 TripDetails.propTypes = {
   navigation: PropTypes.object.isRequired,
-  tripData: PropTypes.array.isRequired,
 };
 
 
@@ -126,7 +126,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeTripStatus: (trip, status) => dispatch(changeTripStatus(trip, status)),
+  dispatch
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripDetails);
