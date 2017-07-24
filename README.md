@@ -1,4 +1,4 @@
-# React Native POC App
+# React Native POC App ![Status](https://www.bitrise.io/app/a516aa045c8fc085/status.svg?token=1Q4QnuQBPdGXuNpUCGXhMQ&branch=master)
 This is a mobile app developed under [this](https://docs.google.com/document/d/1E0Y4EtSRlbWhMoG9Zn_a5HABDDpb6bmPBBdSIEX25FE/edit#heading=h.6soffpkr7f45) specification.
 
 ## What I have done so far
