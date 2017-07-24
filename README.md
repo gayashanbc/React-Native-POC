@@ -26,3 +26,5 @@ This is a mobile app developed under [this](https://docs.google.com/document/d/1
 
 ### 2. Trip Details Screen
 ![TripDetails Screen](http://i.imgur.com/nBnTWnT.png)
+
+***
